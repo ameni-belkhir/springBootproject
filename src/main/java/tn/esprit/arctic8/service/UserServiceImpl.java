@@ -3,8 +3,11 @@ package tn.esprit.arctic8.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.arctic8.entity.User;
+import tn.esprit.arctic8.entity.UserDetails;
+import tn.esprit.arctic8.repository.IUserDetailsRepo;
 import tn.esprit.arctic8.repository.IUserRepo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -12,6 +15,8 @@ import java.util.List;
 public class UserServiceImpl implements IUserService {
 
     IUserRepo userRepo;
+    IUserDetailsRepo userDetailsRepo;
+
 
     @Override
     public User addUser(User user) {
@@ -38,5 +43,19 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserById(Long idUser) {
         return userRepo.findById(idUser).orElse(null);
+    }
+
+    @Override
+    public List<User> getUserByCinAndDateOfBirth(Long cin, LocalDate start, LocalDate end) {
+        return userRepo.findUsersByCinAAndAndDateOfBirthBetween(cin, start, end);
+    }
+
+    @Override
+    public void assignUserToUserDetails(Long idUser, Long idDetails) {
+        User user = userRepo.findById(idUser).orElse(null);
+        UserDetails userDetails = userDetailsRepo.findById(idDetails).orElse(null);
+        userDetails.setUser(user);
+        userDetailsRepo.save(userDetails);
+
     }
 }

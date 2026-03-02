@@ -8,8 +8,9 @@ import lombok.Setter;
 
 
 import java.time.LocalDate;
-@Entity
+import java.util.Set;
 
+@Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +18,7 @@ public class User {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     Long idUser;
-    @Setter
+
     String firstName;
     String lastName;
     LocalDate dateOfBirth;
@@ -25,6 +26,9 @@ public class User {
     long cin;
     @Enumerated(EnumType.STRING)
     TypeUser userType;
+
+    @OneToMany(mappedBy = "user")
+    Set<UserDetails> userDetails;
 
     public void setIdUser(Long idUser) {
         this.idUser = idUser;

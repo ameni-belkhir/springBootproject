@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.arctic8.entity.User;
 import tn.esprit.arctic8.service.IUserService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -43,5 +44,10 @@ public class UserRestController {
     @GetMapping(path = "/{idUser}")
     User getUserById(@PathVariable () Long idUser){
         return userService.getUserById(idUser);
+    }
+
+    @GetMapping(path = "/users/{cin}/{start}/{end}")
+    List<User> getUserByCinAndDateOfBirth(@PathVariable("cin") Long cin, @PathVariable("start") LocalDate start, @PathVariable("end") LocalDate end){
+        return userService.getUserByCinAndDateOfBirth(cin, start, end);
     }
 }
