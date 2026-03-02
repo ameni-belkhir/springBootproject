@@ -50,4 +50,8 @@ public class UserRestController {
     List<User> getUserByCinAndDateOfBirth(@PathVariable("cin") Long cin, @PathVariable("start") LocalDate start, @PathVariable("end") LocalDate end){
         return userService.getUserByCinAndDateOfBirth(cin, start, end);
     }
+    @PutMapping(path="/{id-user}/{id-user-details}")
+    void assignUserToUserDetails(@PathVariable Long idUser, @PathVariable Long idDetails){
+        userService.assignUserToUserDetails(idUser, idDetails);
+    }
 }
