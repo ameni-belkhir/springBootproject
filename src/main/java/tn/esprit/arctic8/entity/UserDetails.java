@@ -18,6 +18,9 @@ public class UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idDetails;
 
+    String details;
+    String description;
+
     @ManyToOne
     User user;
 }
