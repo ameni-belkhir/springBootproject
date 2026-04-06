@@ -47,7 +47,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> getUserByCinAndDateOfBirth(Long cin, LocalDate start, LocalDate end) {
-        return userRepo.findUsersByCinAAndAndDateOfBirthBetween(cin, start, end);
+        return userRepo.findUsersByCinAndDateOfBirthBetween(cin, start, end);
     }
 
     @Override
