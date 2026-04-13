@@ -14,10 +14,10 @@ import java.time.LocalDateTime;
 @Slf4j
 @Component
 @Aspect
-public class ProjectAOP {
+public class ProjectAOP {//aspect
     //@Before("execution(* tn.esprit.arctic8.*.IUserService.add*(..))")   // .. 0 ou plusieur parametres
-    //@AfterThrowing("execution(* tn.esprit.arctic8.*.IUserService.*(..))")
-    //@AfterReturning("execution(* tn.esprit.arctic8.*.IUserService.*(..))") //joinpoint
+    //@AfterThrowing("execution(* tn.esprit.arctic8.*.IUserService.*(..))") //@AfterThrowing => type d'advice
+    //@AfterReturning("execution(* tn.esprit.arctic8.*.IUserService.*(..))") //joinpoint  pattern la methode visé (* tn.esprit.arctic8.*.IUserService.*(..))" cutpoint
     void journaliser(){
         log.info("test");
     }
